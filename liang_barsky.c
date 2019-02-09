@@ -22,6 +22,7 @@ else
 if(p==0.0)
 {
 	if(q<0.0) return(0);
+	//else print
 	
 }
 return(1);
