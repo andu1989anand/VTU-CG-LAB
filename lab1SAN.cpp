@@ -37,8 +37,10 @@ void Draw()
         x=x+1;
         if(p>=0)
         {
-
-            y=y+1;
+            if(m>=1)
+                y=y+1;
+            else
+                y=y-1;
             p = p + 2*dy-2*dx;
         }
         else
