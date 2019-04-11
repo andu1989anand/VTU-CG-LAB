@@ -1,4 +1,4 @@
-//Draw a colour cube and spin it using OpenGL transformation matrices.
+//Clip a lines using Cohen-Sutherland algorithm
 
 #include<windows.h>
 #include<stdio.h>
@@ -143,7 +143,7 @@ int main(int argC, char *argV[])
 {
 
     printf("enter endpoints of line(x1,y1) and (x1,y1)\n");
-	  scanf("%f%f%f%f",&X1,&Y1,&X2,&Y2);
+    scanf("%f%f%f%f",&X1,&Y1,&X2,&Y2);
 
     glutInit(&argC,argV);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
