@@ -1,38 +1,36 @@
-//Rotating Color cube
+//Draw a colour cube and spin it using OpenGL transformation matrices.
 
 #include<windows.h>
 #include<GL/glut.h>
-#include<math.h>
-#include<stdio.h>
 
 
-float V[][3]={{0,0,0},{0,0.5,0},{.5,.5,0},{.5,0,0},{0,0,.5},{0,.5,.5},{.5,.5,.5},{.5,0,.5}};
-float color[][3]={{1,0,0},{0,1,0},{0,0,1},{1,1,0},{0,1,1},{1,0,1},{0,0,0},{.5,0,.5}};
-GLfloat r,d=0;
-char a;
-int i;
-float nV[8][3];
+
+float V[8][3]={{0,0,0},{0,0.5,0},{.5,.5,0},{.5,0,0},{0,0,.5},{0,.5,.5},{.5,.5,.5},{.5,0,.5}};
+float color[8][3]={{1,0,0},{0,1,0},{0,0,1},{1,1,0},{0,1,1},{1,0,1},{0,0,0},{.5,0,.5}};
+GLfloat d=0;
 
 void spin()
 {
-    d=d+1;
-    if (d>360)
-        d=0;
-    glutPostRedisplay();
+d=d+0.0001;
+if (d>360)
+d=0;
+glutPostRedisplay();
 }
+
+
 
 void drawpoly(int a,int b,int c, int d)
 {
 
 	glBegin(GL_POLYGON);
 	//glColor3fv(color[a]);
-	glVertex3fv(nV[a]);
+	glVertex3fv(V[a]);
 	//glColor3fv(color[b]);
-	glVertex3fv(nV[b]);
+	glVertex3fv(V[b]);
 	//glColor3fv(color[c]);
-	glVertex3fv(nV[c]);
+	glVertex3fv(V[c]);
 	//glColor3fv(color[d]);
-	glVertex3fv(nV[d]);
+	glVertex3fv(V[d]);
 	glEnd();
 	glFlush();
 
@@ -42,38 +40,8 @@ void draw()
 {
 glClearColor(1.0,1.0,1.0,1.0);
 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+glRotatef(d,1,0,1);
 
-r = d*3.14/180;
-    if(a=='x')
-    {
-       for(i=0;i<8;i++)
-    {
-        nV[i][0] = V[i][0];
-        nV[i][1] = V[i][1]*cos(r)-V[i][2]*sin(r);
-        nV[i][2] = V[i][1]*sin(r)+V[i][2]*cos(r);
-    }
-    }
-    if(a=='y')
-    {
-    for(i=0;i<8;i++)
-    {
-        nV[i][0] = V[i][0]*cos(r) + V[i][2]*sin(r);
-        nV[i][1] = V[i][1];
-        nV[i][2] = -V[i][0]*sin(r) + V[i][2]*cos(r);
-    }
-    }
-
-    if(a=='z')
-    {
-
-         for(i=0;i<8;i++)
-        {
-            nV[i][0] = V[i][0]*cos(r)-V[i][1]*sin(r);
-            nV[i][1] = V[i][0]*sin(r)+V[i][1]*cos(r);
-            nV[i][2] = V[i][2];
-        }
-
-    }
 
 glColor3fv(color[0]);
 drawpoly(0,1,2,3);
@@ -96,13 +64,11 @@ glutSwapBuffers();
 
 int main(int argc,char**argv)
 {
-     printf("\nEnter the Axis of Rotation : ");
-     scanf("%c",&a);
-     glutInit(&argc,argv);
+        glutInit(&argc,argv);
      glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
      glutInitWindowPosition(100,100);
      glutInitWindowSize(500, 500);
-     glutCreateWindow("Lab-3 Rotation of Color Cube");
+     glutCreateWindow("Lab-8: Perspective Viewing with Camera");
      glutDisplayFunc(draw);
      glutIdleFunc(spin);
      glEnable(GL_DEPTH_TEST);
