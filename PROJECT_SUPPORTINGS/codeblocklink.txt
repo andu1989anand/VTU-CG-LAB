@@ -1,3 +1,14 @@
 https://www.codeblocks.org/downloads/binaries/
 
 Download codeblocks-20.03mingw-setup.exe or codeblocks-20.03mingw-32bit-setup.exe
+
+glut32.dll
+C:\Windows\System
+C:\Windows\System32
+
+glut32.lib
+C:\Program Files (x86)\CodeBlocks\MinGW\lib
+
+glut.h
+C:\Program Files (x86)\CodeBlocks\MinGW\include\GL
+C:\Program Files (x86)\CodeBlocks\MinGW\include
