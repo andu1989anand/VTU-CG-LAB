@@ -1,0 +1,3 @@
+https://www.codeblocks.org/downloads/binaries/
+
+Download codeblocks-20.03mingw-setup.exe or codeblocks-20.03mingw-32bit-setup.exe
